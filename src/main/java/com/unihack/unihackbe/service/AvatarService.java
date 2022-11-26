@@ -1,5 +1,6 @@
 package com.unihack.unihackbe.service;
 
+import com.unihack.unihackbe.entity.AvatarEntity;
 import com.unihack.unihackbe.entity.dto.avatar.AvatarDetails;
 import com.unihack.unihackbe.entity.dto.avatar.AvatarSummary;
 
@@ -51,6 +52,8 @@ public interface AvatarService {
      * @return the found avatar
      */
     AvatarDetails getAvatarById(@NotBlank @Valid String id);
+
+    AvatarEntity getEntityAvatar(String id);
 
 
 }

@@ -10,9 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class MealServiceImpl implements MealService {
@@ -43,11 +42,10 @@ public class MealServiceImpl implements MealService {
     @Override
     public List<MealDto> findAll(String id) {
 
-//        Map<MealDto, Boolean> mapOfMeals = avatarService.getAvatarById(id).getMealsWeek();
+        List<ObjectId> listOfMealId = avatarService.getEntityAvatar(id).getMealsWeek();
+        List<String> strings = listOfMealId.stream().map(String::valueOf).collect(Collectors.toList());
 
-        //        return listOfMealId.stream().map(this::getMealById).collect(Collectors.toList());
-
-        return avatarService.getAvatarById(id).getMealsWeek();
+        return strings.stream().map(this::getMealById).collect(Collectors.toList());
     }
 
     /**
