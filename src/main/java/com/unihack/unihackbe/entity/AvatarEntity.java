@@ -32,6 +32,7 @@ public class AvatarEntity {
 
     private String netWorth;
 
+
     private String shortBio;
 
     @NotNull
