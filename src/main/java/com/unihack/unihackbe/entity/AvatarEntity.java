@@ -30,6 +30,8 @@ public class AvatarEntity {
     private String bigUrl;
     private String smallUrl;
 
+    private String netWorth;
+
     private String shortBio;
 
     @NotNull
@@ -40,7 +42,7 @@ public class AvatarEntity {
 
     private String level;
 
-    List<String> mealsWeek;
+    List<ObjectId> mealsWeek;
 
     List<String> trainingWeek;
 }

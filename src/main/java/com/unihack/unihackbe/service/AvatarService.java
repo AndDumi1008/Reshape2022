@@ -1,7 +1,7 @@
 package com.unihack.unihackbe.service;
 
-import com.unihack.unihackbe.entity.dto.AvatarDetails;
-import com.unihack.unihackbe.entity.dto.AvatarSummary;
+import com.unihack.unihackbe.entity.dto.avatar.AvatarDetails;
+import com.unihack.unihackbe.entity.dto.avatar.AvatarSummary;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -14,7 +14,7 @@ public interface AvatarService {
     /**
      * Saves an avatar in database
      *
-     * @param avatarDetails the avatar we want to save
+     * @param avatarDetails of the avatar we want to save
      * @return saved avatar
      */
     AvatarDetails save(@NotNull @Valid AvatarDetails avatarDetails);

@@ -1,11 +1,12 @@
 package com.unihack.unihackbe.service;
 
 import com.unihack.unihackbe.entity.AvatarEntity;
-import com.unihack.unihackbe.entity.dto.AvatarDetails;
-import com.unihack.unihackbe.entity.dto.AvatarSummary;
+import com.unihack.unihackbe.entity.dto.avatar.AvatarDetails;
+import com.unihack.unihackbe.entity.dto.avatar.AvatarSummary;
 import com.unihack.unihackbe.repository.AvatarRepository;
 import com.unihack.unihackbe.utils.GeneralMapper;
 import org.bson.types.ObjectId;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,12 +19,14 @@ import java.util.NoSuchElementException;
 public class AvatarServiceImpl implements AvatarService {
 
     private final AvatarRepository avatarRepository;
+    private final MealService mealService;
     private final GeneralMapper generalMapper;
 
 
 //    False error on generalMapper
-    public AvatarServiceImpl(AvatarRepository avatarRepository, GeneralMapper generalMapper) {
+    public AvatarServiceImpl(AvatarRepository avatarRepository, @Lazy MealService mealService, GeneralMapper generalMapper) {
         this.avatarRepository = avatarRepository;
+        this.mealService = mealService;
         this.generalMapper = generalMapper;
     }
 
@@ -90,8 +93,10 @@ public class AvatarServiceImpl implements AvatarService {
         try {
             ObjectId avatarObjectId = generalMapper.stringToObjectId(id);
             AvatarEntity avatarEntity = avatarRepository.findById(avatarObjectId).orElseThrow();
+            AvatarDetails avatarReturn = generalMapper.entityToDetails(avatarEntity);
+            avatarReturn.setMealsWeek(mealService.findAll(id));
 
-            return generalMapper.entityToDetails(avatarEntity);
+            return avatarReturn;
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The avatar was not found.", e);
         }

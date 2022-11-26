@@ -1,4 +1,4 @@
-package com.unihack.unihackbe.entity.dto;
+package com.unihack.unihackbe.entity.dto.avatar;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
