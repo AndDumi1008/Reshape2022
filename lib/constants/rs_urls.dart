@@ -1,0 +1,2 @@
+const privacyUrl = "";
+const termsAndConditionsUrl = "";
