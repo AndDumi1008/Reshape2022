@@ -16,7 +16,6 @@ public class MealDto {
 
     private String kcal;
 
-    private List<String> ingredients;
 
     private String receiptUrl;
 }

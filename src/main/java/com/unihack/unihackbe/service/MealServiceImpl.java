@@ -59,7 +59,6 @@ public class MealServiceImpl implements MealService {
             ObjectId mealId = generalMapper.stringToObjectId(id);
             MealEntity mealEntity = mealRepository.findById(mealId).orElseThrow();
             mealEntity.setKcal(Integer.valueOf(mealDto.getKcal()));
-            mealEntity.setIngredients(mealDto.getIngredients());
             mealEntity.setName(mealDto.getName());
             mealEntity.setReceiptUrl(mealDto.getReceiptUrl());
 

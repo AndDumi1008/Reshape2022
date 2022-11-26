@@ -94,7 +94,7 @@ public class AvatarServiceImpl implements AvatarService {
             ObjectId avatarObjectId = generalMapper.stringToObjectId(id);
             AvatarEntity avatarEntity = avatarRepository.findById(avatarObjectId).orElseThrow();
             AvatarDetails avatarReturn = generalMapper.entityToDetails(avatarEntity);
-            avatarReturn.setMealsWeek(mealService.findAll(id));
+//            avatarReturn.setMealsWeek(mealService.findAll(id));
 
             return avatarReturn;
         } catch (NoSuchElementException e) {

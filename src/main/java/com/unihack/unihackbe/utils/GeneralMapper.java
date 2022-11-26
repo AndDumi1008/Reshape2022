@@ -73,7 +73,6 @@ public abstract class GeneralMapper {
      * */
 
     @Mapping(source = "id", target = "id", qualifiedByName = "objectIdToString")
-    @Mapping(target = "mealsWeek", ignore = true)
     public abstract AvatarSummary entityToSummary(AvatarEntity entity);
 
     @Mapping(source = "id", target = "id", qualifiedByName = "objectIdToString")
@@ -81,8 +80,9 @@ public abstract class GeneralMapper {
     public abstract AvatarDetails entityToDetails(AvatarEntity entity);
 
     @Mapping(source = "id", target = "id", qualifiedByName = "stringToObjectId")
-    @Mapping(source = "birthDate", target = "age", qualifiedByName = "computeAgeToString")
+    @Mapping(target = "mealsWeek", ignore = true)
     public abstract AvatarEntity detailsToEntity(AvatarDetails avatarDetails);
+
 
     public abstract List<AvatarSummary> avatarEntityListToAvatarSummaryList(List<AvatarEntity> avatarEntityList);
 

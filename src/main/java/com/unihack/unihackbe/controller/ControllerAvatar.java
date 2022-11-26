@@ -27,7 +27,7 @@ public class ControllerAvatar {
         this.mealService = mealService;
     }
 
-    @GetMapping("/avatars")
+    @GetMapping("/")
     public List<AvatarSummary> getAllAvatars() {
         return avatarService.findAll();
     }

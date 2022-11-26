@@ -20,7 +20,5 @@ public class MealEntity {
 
     private Integer kcal;
 
-    private List<String> ingredients;
-
     private String receiptUrl;
 }
