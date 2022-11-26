@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="center">
+    <h1 class="bold">Set up your account</h1>
+  </div>
+  <form [formGroup]="profileForm">
+    <div class="column">
+      <mat-form-field appearance="outline">
+        <mat-label class="text">Email</mat-label>
+        <input name="email" id="email" type="text" formControlName="email" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="column">
+      <mat-form-field appearance="outline">
+        <mat-label class="text">Full name</mat-label>
+        <input name="name" id="name" type="text" formControlName="name" matInput>
+      </mat-form-field>
+<!--      <div class="invalid" *ngIf="(-->
+<!--        this.profileForm.get('name')?.dirty ||-->
+<!--        this.profileForm.get('name')?.touched-->
+<!--      ) &&-->
+<!--      this.profileForm.get('name')?.invalid"-->
+<!--      >-->
+<!--        Invalid name!-->
+<!--      </div>-->
+    </div>
+
+    <div class="column">
+      <mat-form-field appearance="outline">
+        <mat-label class="text">Password</mat-label>
+        <input name="password" id="password" type="password" formControlName="password" matInput>
+      </mat-form-field>
+<!--      <div class="invalid" *ngIf="((-->
+<!--                 profileForm.get('password')?.dirty ||-->
+<!--                 profileForm.get('password')?.touched-->
+<!--                ) &&-->
+<!--                profileForm.get('password')?.invalid) || profileForm.get('password')!.hasError('minLength') || profileForm.get('password')!.hasError('pattern')"-->
+<!--      >-->
+<!--        Invalid password!-->
+<!--      </div>-->
+    </div>
+
+    <div class="column">
+      <mat-form-field appearance="outline">
+        <mat-label class="text">Confirm Password</mat-label>
+        <input name="confirmPassword" id="confirmPassword" type="password" formControlName="confirmPassword" matInput>
+      </mat-form-field>
+      <mat-error class="invalid" *ngIf="profileForm.get('confirmPassword')!.hasError('matching')">
+        Password must match.
+      </mat-error>
+    </div>
+    <div class="box">
+    <mat-checkbox (click)="clicked()">I have read and I agree with <span class="bold">Terms and conditions</span> and <span class="bold">Data Privacy</span></mat-checkbox>
+    </div>
+  </form>
+  <div class="center">
+    <button type="button" class="button" (click)="submit()">Sign up</button>
+  </div>
+  <section class="center">
+    Already have an account?&nbsp;<span class="bold" (click)="redirect()">Log in</span>
+  </section>
+</div>

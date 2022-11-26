@@ -1,0 +1,10 @@
+<header>
+  <h1>
+    Choose <span class="text">your master</span>
+  </h1>
+</header>
+<div class="cards-container">
+  <ng-container *ngFor="let avatar of avatars">
+    <app-card [routerLink]="['/home', avatar.id]" [avatar]="avatar" [levelColor]="this.avatarLevelColorService.colorPicker(this.avatar.level)"></app-card>
+  </ng-container>
+</div>

@@ -1,0 +1,41 @@
+img {
+  height: 326px;
+  width: 192px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin: 12px 9px;
+}
+
+.img-gradient {
+  position: absolute;
+  height: 326px;
+  width: 192px;
+  background: rgba(30, 30, 30, 0.6);
+  border-radius: 8px;
+  margin: 12px 9px;
+}
+
+.avatar-text {
+  position: absolute;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #FFFFFF;
+  margin-left: 8px;
+  bottom: 36px;
+}
+
+.avatar-level {
+  position: absolute;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  margin-left: 8px;
+  bottom: 17px;
+}
+
+.avatar-level-color {
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--color);
+}

@@ -1,0 +1,7 @@
+<div class="center">
+  <div class="img-gradient">
+    <div class="avatar-text">{{avatar!.name}}</div>
+    <div class="avatar-level">Level: <span [style.--color]="levelColor" class="avatar-level-color">{{avatar!.level}}</span></div>
+  </div>
+  <img *ngIf="avatar!.bigUrl" src="{{avatar!.bigUrl}}">
+</div>

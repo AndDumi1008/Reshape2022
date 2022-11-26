@@ -1,0 +1,32 @@
+<div *ngIf="avatar; else loadingBlock">
+  <img class="img-background" src="{{avatar!.backgroundUrl}}">
+  <img class="back-arrow" (click)="redirect()" src="../../../assets/images/back-arrow.jpeg">
+  <img class="img-profile" src="{{avatar!.smallUrl}}">
+
+  <main>
+    <div class="row">
+      <div class="column">
+        <div class="welcome-text">Welcome to</div>
+        <div class="welcome-text">{{avatar!.name}}</div>
+      </div>
+      <div class="column">
+        <div class="level-text">Level:</div>
+        <div class="level-text" style="color: {{color}}">{{avatar!.level}}</div>
+      </div>
+    </div>
+    <div>
+      <div class="bio-title">Bio</div>
+      <app-text-container [text]="avatar!.shortBio" [containerColor]="'rgba(30, 30, 30, 0.6)'"></app-text-container>
+      <div class="row">
+        <app-text-container [text]="avatar!.age + ' years old'" [containerColor]="'rgba(30, 30, 30, 0.6)'"></app-text-container>
+        <app-text-container [text]="'Net worth: ' + avatar!.age" [containerColor]="'rgba(30, 30, 30, 0.6)'"></app-text-container>
+      </div>
+    </div>
+    <div class="button-container">
+      <app-text-container [text]="'Reshape Yourself'" [containerColor]="'#32B4CC'"></app-text-container>
+    </div>
+  </main>
+</div>
+<ng-template #loadingBlock>
+  <app-loader></app-loader>
+</ng-template>

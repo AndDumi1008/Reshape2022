@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="center">
+    <h1 class="bold">Log in into your account</h1>
+  </div>
+  <form [formGroup]="profileForm">
+    <div class="column">
+      <mat-form-field appearance="outline">
+        <mat-label class="text">Email</mat-label>
+        <input name="email" id="email" type="text" formControlName="email" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="column">
+      <mat-form-field appearance="outline">
+        <mat-label class="text">Password</mat-label>
+        <input name="password" id="password" type="password" formControlName="password" matInput>
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="center">
+    <button type="button" class="button" (click)="submit()">Log in</button>
+  </div>
+  <section class="center">
+    Don't have an account?&nbsp;<span class="bold" (click)="redirect()">Sign up</span>
+  </section>
+</div>
