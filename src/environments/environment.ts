@@ -2,8 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+import {IEnvironment} from "../app/interfaces/environment.interface";
+
+export const environment: IEnvironment = {
+  production: false,
+  appwrite: {
+    endpoint: 'https://zettabyte.wiki/v1',
+    projectId: 'reshape_master'
+  },
+  apiUrl: 'http://unihack2022-env.eba-vzvrqqcj.eu-central-1.elasticbeanstalk.com/'
 };
 
 /*

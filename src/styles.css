@@ -1,1 +1,199 @@
 /* You can add global styles to this file, and also import other style files */
+/***
+    The new CSS reset - version 1.7.3 (last updated 7.8.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+  color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable="false"])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+}
+
+* {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+/*.mat-checkbox-layout {*/
+/*  inline-size: 100px!important;*/
+/*  word-wrap: break-word!important;*/
+/*}*/
+
+.container {
+  padding: 24px;
+}
+
+.invalid {
+  color: #DD5D50;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+.small-logo {
+  margin: 56px 0 24px 0;
+  height: 100%;
+  width: 64px;
+}
+
+.button {
+  background-color: #32B4CC;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 405px) {
+  .cards-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  app-card {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 605px) {
+  app-card {
+    width: 33.33%;
+  }
+}
+
+@media screen and (min-width: 805px) {
+  app-card {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 1005px) {
+  app-card {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 1210px) {
+  app-card {
+    width: 16.66%;
+  }
+}
+
+@media screen and (min-width: 1415px) {
+  app-card {
+    width: 14.28%;
+  }
+}
