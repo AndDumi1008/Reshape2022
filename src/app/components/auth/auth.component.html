@@ -8,6 +8,14 @@
         <mat-label class="text">Email</mat-label>
         <input name="email" id="email" type="text" formControlName="email" matInput>
       </mat-form-field>
+      <div class="invalid" *ngIf="((
+                 profileForm.get('email')?.dirty ||
+                 profileForm.get('email')?.touched
+                ) &&
+                profileForm.get('email')?.invalid) || profileForm.get('email')!.hasError('email')"
+      >
+        Invalid email!
+      </div>
     </div>
 
     <div class="column">
@@ -15,14 +23,14 @@
         <mat-label class="text">Full name</mat-label>
         <input name="name" id="name" type="text" formControlName="name" matInput>
       </mat-form-field>
-<!--      <div class="invalid" *ngIf="(-->
-<!--        this.profileForm.get('name')?.dirty ||-->
-<!--        this.profileForm.get('name')?.touched-->
-<!--      ) &&-->
-<!--      this.profileForm.get('name')?.invalid"-->
-<!--      >-->
-<!--        Invalid name!-->
-<!--      </div>-->
+      <div class="invalid" *ngIf="(
+        this.profileForm.get('name')?.dirty ||
+        this.profileForm.get('name')?.touched
+      ) &&
+      this.profileForm.get('name')?.invalid"
+      >
+        Invalid name!
+      </div>
     </div>
 
     <div class="column">
@@ -30,14 +38,14 @@
         <mat-label class="text">Password</mat-label>
         <input name="password" id="password" type="password" formControlName="password" matInput>
       </mat-form-field>
-<!--      <div class="invalid" *ngIf="((-->
-<!--                 profileForm.get('password')?.dirty ||-->
-<!--                 profileForm.get('password')?.touched-->
-<!--                ) &&-->
-<!--                profileForm.get('password')?.invalid) || profileForm.get('password')!.hasError('minLength') || profileForm.get('password')!.hasError('pattern')"-->
-<!--      >-->
-<!--        Invalid password!-->
-<!--      </div>-->
+      <div class="invalid" *ngIf="((
+                 profileForm.get('password')?.dirty ||
+                 profileForm.get('password')?.touched
+                ) &&
+                profileForm.get('password')?.invalid) || profileForm.get('password')!.hasError('minLength')"
+      >
+        Password must contain 8 or more characters!
+      </div>
     </div>
 
     <div class="column">
@@ -50,7 +58,7 @@
       </mat-error>
     </div>
     <div class="box">
-    <mat-checkbox (click)="clicked()">I have read and I agree with <span class="bold">Terms and conditions</span> and <span class="bold">Data Privacy</span></mat-checkbox>
+    <mat-checkbox (click)="clicked()">I have read and I agree with <span (click)="openTermsAndConditions()" class="bold">Terms and conditions</span> and <span (click)="openDataPrivacy()" class="bold">Data Privacy</span></mat-checkbox>
     </div>
   </form>
   <div class="center">

@@ -7,6 +7,7 @@ export interface IAvatarDetails {
   smallUrl: string,
   backgroundUrl: string,
   age: string,
+  netWorth: string,
   wakeUpTime: string,
   sleepTime: string,
   mealsWeek: string[],

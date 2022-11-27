@@ -13,3 +13,9 @@ header {
   display: flex;
   justify-content: center;
 }
+
+.log-out-button {
+  position: absolute;
+  right: 12px;
+  top: 16px;
+}

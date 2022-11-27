@@ -26,6 +26,7 @@ export class AuthService {
       name
     ).then(response => {
       console.log(response);
+      this.logIn(email, password);
     }, error => {
       console.log(error);
       this.snackBar.open(error.code + ': ' + error.message, 'Close');
@@ -43,7 +44,16 @@ export class AuthService {
       console.log(error);
       this.snackBar.open(error.code + ': ' + error.message, 'Close');
     });
+  }
 
+  logOut(sessionID: string) {
+    this.account.deleteSession(sessionID).then(response => {
+      console.log(response); // Success
+      this.route.navigate(['/logIn']);
+    }, error => {
+      console.log(error); // Failure
+      this.snackBar.open(error.code + ': ' + error.message, 'Close');
+    });
   }
 
   getAccount() {
@@ -59,4 +69,5 @@ export class AuthService {
       this.route.navigate(['/signUp'])
     });
   }
+
 }

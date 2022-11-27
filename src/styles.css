@@ -107,11 +107,6 @@ body {
   flex-direction: row;
 }
 
-/*.mat-checkbox-layout {*/
-/*  inline-size: 100px!important;*/
-/*  word-wrap: break-word!important;*/
-/*}*/
-
 .container {
   padding: 24px;
 }
@@ -133,10 +128,12 @@ body {
   color: #fff;
   border-radius: 8px;
   padding: 12px;
+  cursor: pointer;
 }
 
 .bold {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .center {
@@ -154,6 +151,28 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+img {
+  cursor: pointer;
+}
+
+.custom-modal-container .mat-dialog-container {
+  padding: 16px 10px;
+  width: 553px;
+  height: 100%;
+  border-radius: 0;
+  max-height: calc(100vh - 50px);
+  overflow: hidden;
+}
+
+i {
+  cursor: pointer;
+}
+
+app-text-container {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 405px) {

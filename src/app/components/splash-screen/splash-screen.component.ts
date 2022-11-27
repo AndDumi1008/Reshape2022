@@ -15,7 +15,6 @@ export class SplashScreenComponent implements OnInit {
     this.authService.getAccount().then((response) => {
       console.log(response); // Success
       this.name = response.name;
-      return name;
     }, error => {
       console.log(error); // Failure
     });

@@ -49,9 +49,20 @@
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 30vh;
+  margin-top: 20vh;
+  cursor: pointer;
 }
 
 main {
   padding: 35px;
+}
+
+.row {
+  margin-top: 12px;
+}
+
+.log-out-button {
+  position: absolute;
+  right: 12px;
+  top: 16px;
 }

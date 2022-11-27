@@ -1,10 +1,14 @@
 <header>
-  <h1>
-    Choose <span class="text">your master</span>
-  </h1>
+    <h1>
+      Choose <span class="text">your master</span>
+    </h1>
+  <div class="log-out-button">
+    <app-text-container (click)="logOut()" [text]="'Log Out'" [containerColor]="'#32B4CC'"></app-text-container>
+  </div>
 </header>
 <div class="cards-container">
   <ng-container *ngFor="let avatar of avatars">
-    <app-card [routerLink]="['/home', avatar.id]" [avatar]="avatar" [levelColor]="this.avatarLevelColorService.colorPicker(this.avatar.level)"></app-card>
+    <app-card [routerLink]="['/home', avatar.id]" [avatar]="avatar"
+              [levelColor]="this.avatarLevelColorService.colorPicker(this.avatar.level)"></app-card>
   </ng-container>
 </div>

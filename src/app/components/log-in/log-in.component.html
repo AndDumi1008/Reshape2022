@@ -8,6 +8,14 @@
         <mat-label class="text">Email</mat-label>
         <input name="email" id="email" type="text" formControlName="email" matInput>
       </mat-form-field>
+      <div class="invalid" *ngIf="((
+                 profileForm.get('email')?.dirty ||
+                 profileForm.get('email')?.touched
+                ) &&
+                profileForm.get('email')?.invalid) || profileForm.get('email')!.hasError('email')"
+      >
+        Invalid email!
+      </div>
     </div>
 
     <div class="column">
@@ -15,6 +23,14 @@
         <mat-label class="text">Password</mat-label>
         <input name="password" id="password" type="password" formControlName="password" matInput>
       </mat-form-field>
+      <div class="invalid" *ngIf="((
+                 profileForm.get('password')?.dirty ||
+                 profileForm.get('password')?.touched
+                ) &&
+                profileForm.get('password')?.invalid) || profileForm.get('password')!.hasError('minLength')"
+      >
+        Password must contain 8 or more characters!
+      </div>
     </div>
   </form>
   <div class="center">

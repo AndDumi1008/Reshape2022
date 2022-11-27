@@ -14,7 +14,7 @@ export class AvatarService {
   constructor(private http: HttpClient) { }
 
   getAvatars(): Observable<IAvatar[]> {
-    return this.http.get<IAvatar[]>(`${this.apiUrl}api/avatars`);
+    return this.http.get<IAvatar[]>(`${this.apiUrl}api/`);
   }
 
   getAvatarByID(id: string): Observable<IAvatarDetails> {

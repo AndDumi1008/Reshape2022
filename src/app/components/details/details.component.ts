@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AvatarService} from "../../services/avatar.service";
 import {IAvatarDetails} from "../../interfaces/avatar-details.interface";
 import {AvatarLevelColorService} from "../../services/avatar-level-color.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-details',
@@ -14,7 +15,7 @@ export class DetailsComponent implements OnInit {
   avatar?: IAvatarDetails;
   color?: string;
   constructor(private router: ActivatedRoute, private avatarService: AvatarService, private avatarLevelColor: AvatarLevelColorService,
-              private r: Router) { }
+              private r: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params['id'];
@@ -26,5 +27,13 @@ export class DetailsComponent implements OnInit {
 
   redirect() {
     this.r.navigate(['/home']);
+  }
+
+  goTo() {
+    this.r.navigate([`/home/${this.id}/${this.id}`])
+  }
+
+  logOut() {
+    this.authService.logOut('current');
   }
 }
