@@ -52,6 +52,12 @@ The reasons people follow leaders are largely governed by their desire to have s
 
 
 &emsp;
+  
+## Observation
+There are 3 projects for a single application. Each project is stored in one branch named:
+<li>Frontend</li>
+<li>Mobile</li>
+<li>Backend</li>
 
 # Team 🤿
 
@@ -78,9 +84,4 @@ The reasons people follow leaders are largely governed by their desire to have s
 <img src="https://appwrite.io/images-ee/press/square-logo-pink.svg" width="80">
 </p>
 
-## Observation
-There are 3 projects for a single application. Each project is stored in one branch named:
-<li>Frontend</li>
-<li>Mobile</li>
-<li>Backend</li>
 &emsp;
