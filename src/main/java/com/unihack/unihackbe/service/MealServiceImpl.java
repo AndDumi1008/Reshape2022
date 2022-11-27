@@ -32,7 +32,6 @@ public class MealServiceImpl implements MealService {
     @Override
     public MealDto save(MealDto mealDto) {
         MealEntity mealEntity = mealRepository.save(generalMapper.dtoToEntity(mealDto));
-
         return generalMapper.entityToDto(mealEntity);
     }
 
@@ -41,11 +40,9 @@ public class MealServiceImpl implements MealService {
      */
     @Override
     public List<MealDto> findAll(String id) {
-
         List<ObjectId> listOfMealId = avatarService.getEntityAvatar(id).getMealsWeek();
-        List<String> strings = listOfMealId.stream().map(String::valueOf).collect(Collectors.toList());
-
-        return strings.stream().map(this::getMealById).collect(Collectors.toList());
+        List<String> idToString = listOfMealId.stream().map(String::valueOf).collect(Collectors.toList());
+        return idToString.stream().map(this::getMealById).collect(Collectors.toList());
     }
 
     /**
@@ -58,7 +55,7 @@ public class MealServiceImpl implements MealService {
             MealEntity mealEntity = mealRepository.findById(mealId).orElseThrow();
             mealEntity.setKcal(Integer.valueOf(mealDto.getKcal()));
             mealEntity.setName(mealDto.getName());
-            mealEntity.setReceiptUrl(mealDto.getReceiptUrl());
+            mealEntity.setRecipeUrl(mealDto.getRecipeUrl());
 
             MealEntity updatedMeal = mealRepository.save(mealEntity);
 
@@ -89,7 +86,6 @@ public class MealServiceImpl implements MealService {
         try {
             ObjectId mealObjectId = generalMapper.stringToObjectId(id);
             MealEntity mealEntity = mealRepository.findById(mealObjectId).orElseThrow();
-
             return generalMapper.entityToDto(mealEntity);
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The meal was not found.", e);

@@ -1,6 +1,7 @@
 package com.unihack.unihackbe.entity.dto.avatar;
 
 import com.unihack.unihackbe.entity.dto.meal.MealDto;
+import com.unihack.unihackbe.entity.dto.training.TrainingDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,5 @@ public class AvatarDetails extends AvatarDto {
 
     List<MealDto> mealsWeek;
 
-    List<String> trainingWeek;
+    Map<TrainingDto, String> trainingWeek;
 }

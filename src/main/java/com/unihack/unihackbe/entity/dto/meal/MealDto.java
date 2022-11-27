@@ -16,6 +16,5 @@ public class MealDto {
 
     private String kcal;
 
-
-    private String receiptUrl;
+    private String recipeUrl;
 }

@@ -45,5 +45,5 @@ public class AvatarEntity {
 
     List<ObjectId> mealsWeek;
 
-    List<String> trainingWeek;
+    List<ObjectId> trainingWeek;
 }

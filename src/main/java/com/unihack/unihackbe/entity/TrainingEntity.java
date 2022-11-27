@@ -6,19 +6,14 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
-@Document("meal")
+@Document("training")
 @Data
 @Builder
-public class MealEntity {
+public class TrainingEntity {
 
     @Id
     private ObjectId id;
 
     private String name;
-
-    private Integer kcal;
-
-    private String recipeUrl;
+    private String exerciseUrl;
 }
