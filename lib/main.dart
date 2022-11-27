@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:reshape/features/authentication/register_page.dart';
 import 'package:appwrite/appwrite.dart';
+import 'package:reshape/pages/splashscreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,8 +21,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final Client client;
-  const MyApp({super.key, required this.client});
+  final Client? client;
+  const MyApp({super.key, this.client});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
       title: 'Reshape',
       debugShowCheckedModeBanner: false,
       theme: _buildTheme(),
-      home: RegisterPage(
-        client: client,
+      home: SplashScreenRs(
+        client: client!,
       ),
     );
   }

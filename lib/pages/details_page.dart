@@ -2,21 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:reshape/constants/rs_colors.dart';
 import 'package:reshape/models/details.dart';
 import 'package:reshape/pages/home_page.dart';
+import 'package:reshape/pages/progress_page.dart';
+import 'package:reshape/widgets/rs_button.dart';
+import 'package:appwrite/appwrite.dart';
 
 import '../constants/rs_margins.dart';
 import '../constants/rs_text_style.dart';
 import '../services/api_service.dart';
 
 class DetailsPage extends StatefulWidget {
+  final Client client;
   final String id;
-  const DetailsPage({Key? key, required this.id}) : super(key: key);
+  const DetailsPage({Key? key, required this.id, required this.client})
+      : super(key: key);
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  Details? details;
+  Details? _details;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +33,7 @@ class _DetailsPageState extends State<DetailsPage> {
             future: ApiService().fetchDetails(widget.id),
             builder: (BuildContext context, AsyncSnapshot<Details?> snapshot) {
               if (snapshot.hasData) {
-                details = snapshot.data;
-                print(details!.backgroundUrl);
+                _details = snapshot.data;
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,18 +46,19 @@ class _DetailsPageState extends State<DetailsPage> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                details!.bigUrl,
+                                _details!.backgroundUrl,
                               ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 12.0, top: 18.0),
+                          padding: const EdgeInsets.only(
+                              left: RsMargins.mediumPadding, top: 18.0),
                           child: Align(
                             alignment: Alignment.topLeft,
                             child: Container(
-                              height: 40,
-                              width: 40,
+                              height: RsMargins.backButtonSize,
+                              width: RsMargins.backButtonSize,
                               alignment: Alignment.center,
                               decoration: const BoxDecoration(
                                 color: Colors.white,
@@ -70,7 +75,9 @@ class _DetailsPageState extends State<DetailsPage> {
                                 onPressed: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => const HomePage(),
+                                      builder: (context) => HomePage(
+                                        client: widget.client,
+                                      ),
                                     ),
                                   );
                                 },
@@ -80,73 +87,82 @@ class _DetailsPageState extends State<DetailsPage> {
                         ),
                         Positioned(
                           left: MediaQuery.of(context).size.width / 2 - 40,
-                          bottom: 12,
+                          bottom: 12.0,
                           child: Container(
-                            height: 80,
-                            width: 80,
+                            height: RsMargins.avatarSize,
+                            width: RsMargins.avatarSize,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: NetworkImage(details!.smallUrl),
+                                image: NetworkImage(_details!.smallUrl),
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 35.0, top: 35.0, right: 35.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Welcome to',
-                                style: RsTextStyle.mediumHighText,
-                              ),
-                              Text(
-                                '${details!.name}!',
-                                style: RsTextStyle.bigText,
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Level:',
-                                style: RsTextStyle.smallMediumText,
-                              ),
-                              Text(
-                                details!.level,
-                                style: RsTextStyle.smallMediumText
-                                    .copyWith(color: RsColors.insaneColor),
-                              ),
-                            ],
-                          ),
-                        ],
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: RsMargins.detailsBigPadding,
+                            top: RsMargins.detailsBigPadding,
+                            right: RsMargins.detailsBigPadding),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Welcome to',
+                                  style: RsTextStyle.mediumHighText,
+                                ),
+                                Text(
+                                  '${_details!.name}!',
+                                  style: RsTextStyle.bigText,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 20.0,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Level:',
+                                  style: RsTextStyle.smallMediumText,
+                                ),
+                                Text(
+                                  _details!.level,
+                                  style: RsTextStyle.smallMediumText
+                                      .copyWith(color: RsColors.insaneColor),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: 35.0, vertical: 15.0),
+                          horizontal: RsMargins.detailsBigPadding,
+                          vertical: RsMargins.detailsMediumPadding),
                       child: Text(
                         'Bio',
                         style: RsTextStyle.subtitleText,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: RsMargins.detailsBigPadding),
                       child: Container(
                         decoration: BoxDecoration(
                           color: RsColors.shadowColor,
@@ -156,7 +172,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         child: Padding(
                           padding: const EdgeInsets.all(RsMargins.smallPadding),
                           child: Text(
-                            details!.shortBio,
+                            _details!.shortBio.replaceAll("Â", ""),
                             style: RsTextStyle.descriptionText,
                           ),
                         ),
@@ -164,7 +180,8 @@ class _DetailsPageState extends State<DetailsPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 35.0, vertical: 15.0),
+                          horizontal: RsMargins.detailsBigPadding,
+                          vertical: RsMargins.detailsMediumPadding),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -178,7 +195,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               padding:
                                   const EdgeInsets.all(RsMargins.smallPadding),
                               child: Text(
-                                details!.age,
+                                '${_details!.age} years old',
                                 style: RsTextStyle.descriptionText,
                               ),
                             ),
@@ -191,14 +208,39 @@ class _DetailsPageState extends State<DetailsPage> {
                             ),
                             child: Padding(
                               padding:
-                              const EdgeInsets.all(RsMargins.smallPadding),
+                                  const EdgeInsets.all(RsMargins.smallPadding),
                               child: Text(
-                                details!.age,
+                                'Net worth ${_details!.netWorth}',
                                 style: RsTextStyle.descriptionText,
                               ),
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.fromLTRB(100.0, 100.0, 100.0, 75.0),
+                      child: RsButton(
+                        text: 'Reshape Yourself',
+                        onTap: () {
+                          Account account = Account(widget.client);
+                          String userName;
+
+                          account.get().then((response) {
+                            userName = response.name;
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => ProgressPage(
+                                      userName: userName,
+                                      id: widget.id,
+                                      client: widget.client,
+                                    )),
+                                    (route) => false);
+                          }).catchError((error) {
+                            userName = '';
+                          });
+                        },
                       ),
                     ),
                   ],

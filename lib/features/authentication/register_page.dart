@@ -9,6 +9,7 @@ import 'package:reshape/widgets/rs_button.dart';
 import 'package:reshape/widgets/rs_checkbox.dart';
 import 'package:reshape/widgets/rs_text_form_field.dart';
 import 'package:appwrite/appwrite.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/rs_urls.dart';
 import '../../widgets/rs_snackbar.dart';
@@ -177,10 +178,16 @@ class _RegisterPageState extends State<RegisterPage> {
                               _password.text.trim(),
                               _name.text.trim(),
                               widget.client);
+                          final prefs = await SharedPreferences.getInstance();
                           if (authMessage == 'success') {
                             if (mounted) {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
+                              prefs.setBool('logInState', true);
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage(
+                                            client: widget.client,
+                                          )),
+                                  (route) => false);
                               showRsSnackbar(context, 'Successful sign up',
                                   isError: false);
                             }
@@ -196,7 +203,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                     } else {
                       showRsSnackbar(context,
-                          'Password must contain 8 or more characters, a digit, a special character, a lower case and a upper case');
+                          'Password must contain 8 or more characters, a digit, a special character, a lower case and an upper case');
                     }
                   }),
             ),

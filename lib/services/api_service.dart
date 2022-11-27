@@ -5,7 +5,7 @@ import '../models/details.dart';
 
 class ApiConstants {
   static String baseUrl = "http://unihack2022-env.eba-vzvrqqcj.eu-central-1.elasticbeanstalk.com";
-  static String endpointForAvatar = "/api/avatars";
+  static String endpointForAvatar = "/api/";
 }
 
 class ApiService {

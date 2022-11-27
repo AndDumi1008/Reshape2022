@@ -41,4 +41,22 @@ class AppWriteClient {
     }
     return 'success';
   }
+
+  static Future<String> logOutUser(Client client) async {
+    Account account = Account(client);
+
+    try {
+      await account.deleteSession(sessionId: 'current');
+    } on AppwriteException catch (e) {
+      print(e.message);
+      if (e.message != null) {
+        return e.message!;
+      } else {
+        return 'An error has occurred. Please try again later.';
+      }
+    } catch (e) {
+      return 'An error has occurred. Please try again later.';
+    }
+    return 'success';
+  }
 }

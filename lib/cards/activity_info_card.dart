@@ -3,12 +3,14 @@ import 'package:reshape/constants/rs_colors.dart';
 import 'package:reshape/constants/rs_margins.dart';
 import 'package:reshape/constants/rs_text_style.dart';
 import 'package:reshape/pages/details_page.dart';
+import 'package:appwrite/appwrite.dart';
 
 class AvatarInfoCard extends StatelessWidget {
   final String id;
   final String name;
   final String level;
   final String bigUrl;
+  final Client client;
 
   const AvatarInfoCard({
     Key? key,
@@ -16,6 +18,7 @@ class AvatarInfoCard extends StatelessWidget {
     required this.name,
     required this.level,
     required this.bigUrl,
+    required this.client,
   }) : super(key: key);
 
   @override
@@ -29,7 +32,7 @@ class AvatarInfoCard extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) =>
-              DetailsPage(id: id),
+              DetailsPage(id: id, client: client,),
             ),
           );
         },
@@ -80,7 +83,7 @@ class AvatarInfoCard extends StatelessWidget {
                                               ? RsColors.hardColor
                                               : RsColors.mediumColor))
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),

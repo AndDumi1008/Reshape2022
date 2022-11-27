@@ -14,7 +14,6 @@ class AuthValidation {
   static String? passwordValidation(dynamic password, BuildContext context) {
     if (password == null ||
         password.isEmpty ||
-        password.length < 8 ||
         !RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
             .hasMatch(password)) {
       return 'Invalid password';

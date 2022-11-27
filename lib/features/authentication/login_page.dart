@@ -9,6 +9,7 @@ import 'package:reshape/pages/home_page.dart';
 import 'package:reshape/widgets/rs_button.dart';
 import 'package:reshape/widgets/rs_text_form_field.dart';
 import 'package:appwrite/appwrite.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../widgets/rs_snackbar.dart';
 import 'auth_validation.dart';
@@ -95,17 +96,22 @@ class _LoginPageState extends State<LoginPage> {
                         _email.text.trim(),
                         _password.text.trim(),
                         widget.client);
+                    final prefs = await SharedPreferences.getInstance();
                     if (authMessage == 'success') {
                       if (mounted) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const HomePage()));
+                        prefs.setBool('logInState', true);
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => HomePage(
+                                      client: widget.client,
+                                    )),
+                            (route) => false);
                         showRsSnackbar(context, 'Successful log in',
                             isError: false);
                       }
                     } else {
                       if (mounted) {
-                        showRsSnackbar(context,
-                            authMessage);
+                        showRsSnackbar(context, authMessage);
                       }
                     }
                   }
