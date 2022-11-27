@@ -1,8 +1,12 @@
 &emsp;
+
 <img src="https://zettabyte.wiki/v1/storage/buckets/6381f8869acf97dc6115/files/6381f8c40cd5796c0eb8/view?project=reshape_master&mode=admin" width="128">
+
 # Reshape
 > ### Change your life by following remarkable personalities
+<p align="middle">
 <img src="https://zettabyte.wiki/v1/storage/buckets/6381f8869acf97dc6115/files/6381fffb8a984c16b2ac/view?project=reshape_master&mode=admin" width="256">
+</p>
 
 ## What problem do we solve
 People fail to organize themselves and follow a program made for them, either because of a lack of motivation or because they don't know or don't realize the importance of organizing their own program.
@@ -56,17 +60,23 @@ The reasons people follow leaders are largely governed by their desire to have s
 # Tech Stack ⛺
 
 ## Mobile App
+<p align="middle">
 <img src="https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png" width="64"> <img src="https://avatars.githubusercontent.com/u/1609975?s=280&v=4" width="64">
+</p>
 
 ## Web App
+<p align="middle">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png" width="64">
 <img src="https://www.ankitweblogic.com/javascript/js_img/javascript.png" width="110">
+</p>
 
 ## Backend + Cloud ☁️
+<p align="middle">
 <img src="https://www.developer-tech.com/wp-content/uploads/sites/3/2021/02/mongodb-atlas-google-cloud-partnership-nosql-databases-integrations-2.jpg" width="128">
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/1200px-Java_programming_language_logo.svg.png" width="55">
 <img src="https://miro.medium.com/max/1400/1*b_al7C5p26tbZG4sy-CWqw.png" width="120">
 <img src="https://appwrite.io/images-ee/press/square-logo-pink.svg" width="80">
+</p>
 
 ## Observation
 There are 3 projects for a single application. Each project is stored in one branch named:
